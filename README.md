@@ -35,4 +35,3 @@ Veja o arquivo INSTALL.
 git clone https://github.com/irapa/sqm-opd.git
 cd sqm-opd
 
-Veja o arquivo INSTALL. 
