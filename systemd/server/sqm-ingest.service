@@ -1,0 +1,9 @@
+[Unit]
+Description=Ingest SQM CSV files into central SQLite database
+After=network.target
+
+[Service]
+Type=oneshot
+User=irapuan
+WorkingDirectory=/home/irapuan/sqm_network
+ExecStart=/usr/bin/python3 /home/irapuan/sqm_network/scripts/ingest_csv.py

@@ -1,0 +1,16 @@
+[Unit]
+Description=SQM OPD Collector
+After=network.target
+
+[Service]
+Type=simple
+User=opd
+WorkingDirectory=/home/opd/sqm_opd/collector
+ExecStart=/home/opd/sqm_opd/.venv/bin/python -u /home/opd/sqm_opd/collector/sqm_collector.py
+Restart=always
+RestartSec=10
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=multi-user.target

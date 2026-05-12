@@ -1,0 +1,9 @@
+[Unit]
+Description=Synchronize SQM data to central server
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+User=opd
+ExecStart=/home/opd/sqm_opd/collector/sync_to_server.sh

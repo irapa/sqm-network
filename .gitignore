@@ -1,0 +1,14 @@
+__pycache__/
+*.pyc
+.venv/
+venv/
+data/
+logs/
+*.sqlite
+*.db
+*.csv
+collector/config.yaml
+collector/sync_to_server.sh
+.DS_Store
+.vscode/
+.idea/
