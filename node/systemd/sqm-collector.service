@@ -1,14 +1,47 @@
 [Unit]
-Description=SQM OPD Collector
-After=network.target
+Description=LNA SQM Network acquisition collector
+Documentation=https://github.com/irapa/sqm-network
+StartLimitIntervalSec=300
+StartLimitBurst=5
 
 [Service]
 Type=simple
 User=opd
-WorkingDirectory=/home/opd/sqm_opd/collector
-ExecStart=/home/opd/sqm_opd/.venv/bin/python -u /home/opd/sqm_opd/collector/sqm_collector.py
-Restart=always
-RestartSec=10
+Group=opd
+SupplementaryGroups=dialout
+UMask=0027
+
+WorkingDirectory=/var/lib/sqm-node
+
+Environment=PYTHONUNBUFFERED=1
+Environment=PYTHONDONTWRITEBYTECODE=1
+
+ExecStartPre=/opt/sqm-node/venv/bin/python /usr/local/lib/sqm-node/sqm_collector.py --config /etc/sqm-node/config.yaml --check-config
+ExecStart=/opt/sqm-node/venv/bin/python /usr/local/lib/sqm-node/sqm_collector.py --config /etc/sqm-node/config.yaml
+
+Restart=on-failure
+RestartSec=15
+TimeoutStopSec=30
+
+StateDirectory=sqm-node
+StateDirectoryMode=0750
+LogsDirectory=sqm-node
+LogsDirectoryMode=0750
+
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=true
+ProtectControlGroups=true
+ProtectKernelModules=true
+ProtectKernelTunables=true
+ProtectClock=true
+ProtectHostname=true
+RestrictSUIDSGID=true
+LockPersonality=true
+RestrictRealtime=true
+SystemCallArchitectures=native
+
 StandardOutput=journal
 StandardError=journal
 

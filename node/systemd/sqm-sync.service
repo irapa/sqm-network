@@ -1,9 +1,43 @@
 [Unit]
-Description=Synchronize SQM data to central server
+Description=LNA SQM Network node synchronization
+Documentation=https://github.com/irapa/sqm-network
 After=network-online.target
 Wants=network-online.target
+StartLimitIntervalSec=300
+StartLimitBurst=5
 
 [Service]
 Type=oneshot
 User=opd
-ExecStart=/home/opd/sqm_opd/collector/sync_to_server.sh
+Group=opd
+UMask=0077
+
+WorkingDirectory=/var/lib/sqm-node
+
+Environment=PYTHONUNBUFFERED=1
+Environment=PYTHONDONTWRITEBYTECODE=1
+
+ExecStartPre=/opt/sqm-node/venv/bin/python /usr/local/lib/sqm-node/sync_to_server.py --config /etc/sqm-node/config.yaml --check-config
+ExecStart=/opt/sqm-node/venv/bin/python /usr/local/lib/sqm-node/sync_to_server.py --config /etc/sqm-node/config.yaml
+
+TimeoutStartSec=5min
+
+StateDirectory=sqm-node
+StateDirectoryMode=0750
+
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=read-only
+ProtectControlGroups=true
+ProtectKernelModules=true
+ProtectKernelTunables=true
+ProtectClock=true
+ProtectHostname=true
+RestrictSUIDSGID=true
+LockPersonality=true
+RestrictRealtime=true
+SystemCallArchitectures=native
+
+StandardOutput=journal
+StandardError=journal

@@ -1,10 +1,12 @@
 [Unit]
-Description=Run SQM synchronization every 5 minutes
+Description=Run LNA SQM Network node synchronization periodically
 
 [Timer]
 OnBootSec=2min
-OnUnitActiveSec=5min
-Persistent=true
+OnUnitInactiveSec=5min
+RandomizedDelaySec=30s
+AccuracySec=15s
+Unit=sqm-sync.service
 
 [Install]
 WantedBy=timers.target
