@@ -1,9 +1,45 @@
 [Unit]
-Description=Ingest SQM CSV files into central SQLite database
-After=network.target
+Description=LNA SQM Network central CSV ingestion
+Documentation=https://github.com/irapa/sqm-network
+After=local-fs.target
+StartLimitIntervalSec=300
+StartLimitBurst=5
 
 [Service]
 Type=oneshot
-User=irapuan
-WorkingDirectory=/home/irapuan/sqm_network
-ExecStart=/usr/bin/python3 /home/irapuan/sqm_network/scripts/ingest_csv.py
+User=sqm-server
+Group=sqm-server
+UMask=0027
+
+WorkingDirectory=/var/lib/sqm-server
+
+Environment=PYTHONUNBUFFERED=1
+Environment=PYTHONDONTWRITEBYTECODE=1
+
+ExecStart=/opt/sqm-server/venv/bin/python /usr/local/lib/sqm-server/ingest_csv.py --incoming-dir /srv/sqm-network/incoming --database /var/lib/sqm-server/sqm_network.sqlite --quarantine-dir /var/lib/sqm-server/quarantine
+
+TimeoutStartSec=10min
+
+StateDirectory=sqm-server
+StateDirectoryMode=0750
+
+NoNewPrivileges=true
+PrivateTmp=true
+PrivateDevices=true
+ProtectSystem=strict
+ProtectHome=true
+ProtectControlGroups=true
+ProtectKernelModules=true
+ProtectKernelTunables=true
+ProtectClock=true
+ProtectHostname=true
+RestrictSUIDSGID=true
+RestrictRealtime=true
+LockPersonality=true
+SystemCallArchitectures=native
+RestrictAddressFamilies=AF_UNIX
+
+ReadOnlyPaths=-/srv/sqm-network/incoming
+
+StandardOutput=journal
+StandardError=journal

@@ -1,10 +1,12 @@
 [Unit]
-Description=Run SQM CSV ingestion every 2 minutes
+Description=Run LNA SQM Network central ingestion periodically
 
 [Timer]
 OnBootSec=1min
-OnUnitActiveSec=2min
-Persistent=true
+OnUnitInactiveSec=2min
+RandomizedDelaySec=20s
+AccuracySec=10s
+Unit=sqm-ingest.service
 
 [Install]
 WantedBy=timers.target
