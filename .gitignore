@@ -24,3 +24,9 @@ config.yaml
 data/
 logs/
 backups/
+
+# Local station configuration and runtime data
+*.corrupt-backup
+
+# External reference documents
+SQM-LU_Users_manual.pdf

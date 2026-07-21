@@ -15,7 +15,7 @@ log_dir: /home/opd/sqm_opd/logs
 
 server:
   enabled: true
-  hostname: 192.168.1.49
+  hostname: SERVER_HOST
   username: irapuan
   remote_path: /home/irapuan/sqm_network/incoming/SQM_OPD_001/
   ssh_key: /home/opd/.ssh/sqm_opd_ed25519

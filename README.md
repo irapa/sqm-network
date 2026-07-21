@@ -1,4 +1,4 @@
-# SQM-OPD — Distributed Sky Quality Monitoring
+# LNA SQM Network — Distributed Night-Sky Brightness Monitoring
 
 Sistema distribuído para monitoramento contínuo do brilho do céu usando sensores **Unihedron SQM-LU**, com nós de aquisição em Raspberry Pi e servidor central para ingestão, banco de dados, Grafana e análise científica.
 
@@ -37,7 +37,7 @@ A Raspberry Pi funciona apenas como **nó de aquisição e buffer local**. O pro
 ## Estrutura do repositório
 
 ```text
-sqm-opd/
+sqm-network/
 ├── collector/
 │   ├── sqm_collector.py
 │   ├── config.example.yaml

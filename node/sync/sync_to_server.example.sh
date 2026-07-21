@@ -5,7 +5,7 @@ set -euo pipefail
 
 DATA_DIR="/home/opd/sqm_opd/data/"
 REMOTE_USER="irapuan"
-REMOTE_HOST="192.168.1.49"
+REMOTE_HOST="SERVER_HOST"
 REMOTE_DIR="/home/irapuan/sqm_network/incoming/SQM_OPD_001/"
 SSH_KEY="/home/opd/.ssh/sqm_opd_ed25519"
 

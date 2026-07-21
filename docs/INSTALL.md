@@ -1,6 +1,6 @@
 # Installation Guide
 
-This document describes the installation of the SQM-OPD distributed monitoring system.
+This document describes the installation of the LNA SQM Network distributed monitoring system.
 
 The architecture has two parts:
 
@@ -35,8 +35,8 @@ ls /dev/ttyUSB*
 
 ```bash
 cd ~
-git clone https://github.com/irapa/sqm-opd.git
-cd sqm-opd
+git clone https://github.com/irapa/sqm-network.git
+cd sqm-network
 
 python3 -m venv .venv
 source .venv/bin/activate

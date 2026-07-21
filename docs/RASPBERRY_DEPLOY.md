@@ -66,13 +66,13 @@ On Raspberry:
 
 ```bash
 ssh-keygen -t ed25519 -f ~/.ssh/sqm_opd_ed25519 -C "sqm-opd-001"
-ssh-copy-id -i ~/.ssh/sqm_opd_ed25519.pub irapuan@192.168.1.49
+ssh-copy-id -i ~/.ssh/sqm_opd_ed25519.pub REMOTE_USER@SERVER_HOST
 ```
 
 Test:
 
 ```bash
-ssh -i ~/.ssh/sqm_opd_ed25519 -o IdentitiesOnly=yes irapuan@192.168.1.49
+ssh -i ~/.ssh/sqm_opd_ed25519 -o IdentitiesOnly=yes REMOTE_USER@SERVER_HOST
 ```
 
 ## Install sync service and timer
