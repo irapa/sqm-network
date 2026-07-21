@@ -41,7 +41,7 @@ cd sqm-opd
 python3 -m venv .venv
 source .venv/bin/activate
 python -m pip install --upgrade pip
-python -m pip install -r requirements-collector.txt
+python -m pip install -r requirements-node.txt
 ```
 
 If your SD card is small, do not install `pandas`, `matplotlib`, Grafana or QGIS on the Raspberry.

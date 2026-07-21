@@ -34,7 +34,7 @@ mkdir -p ~/sqm_network/incoming/SQM_OPD_003
 ## Install ingest script
 
 ```bash
-cp server/scripts/ingest_csv.py ~/sqm_network/scripts/
+cp server/ingest/ingest_csv.py ~/sqm_network/scripts/
 chmod +x ~/sqm_network/scripts/ingest_csv.py
 ```
 
@@ -54,8 +54,8 @@ sqlite3 ~/sqm_network/database/sqm_network.sqlite \
 ## Install systemd ingest timer
 
 ```bash
-sudo cp systemd/server/sqm-ingest.service /etc/systemd/system/
-sudo cp systemd/server/sqm-ingest.timer /etc/systemd/system/
+sudo cp server/systemd/sqm-ingest.service /etc/systemd/system/
+sudo cp server/systemd/sqm-ingest.timer /etc/systemd/system/
 sudo systemctl daemon-reload
 sudo systemctl enable --now sqm-ingest.timer
 ```

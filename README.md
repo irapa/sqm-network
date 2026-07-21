@@ -54,7 +54,7 @@ sqm-opd/
 │       └── sqm-ingest.timer
 ├── grafana/sql/
 ├── docs/
-├── requirements-collector.txt
+├── requirements-node.txt
 ├── requirements-server.txt
 ├── LICENSE
 └── README.md

@@ -12,3 +12,15 @@ collector/sync_to_server.sh
 .DS_Store
 .vscode/
 .idea/
+
+# Runtime databases
+*.sqlite
+*.sqlite-shm
+*.sqlite-wal
+*.sqlite-journal
+
+# Local configuration and operational data
+config.yaml
+data/
+logs/
+backups/
