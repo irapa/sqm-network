@@ -1,21 +1,54 @@
-# Configuration file for one SQM acquisition node.
+# Configuration for one LNA SQM Network acquisition node.
 
-sensor_id: SQM_OPD_001
-site_name: OPD
-latitude: -22.5344
-longitude: -45.5825
-elevation_m: 1864
+station:
+  id: SQM_OPD_001
+  hostname: sqm-opd
+  site_name: Observatório do Pico dos Dias
+  site_code: OPD
 
-serial_port: /dev/ttyUSB0
-baud_rate: 115200
-cadence_seconds: 60
+location:
+  latitude_deg: -22.5344
+  longitude_deg: -45.5825
+  elevation_m: 1864
+  timezone: America/Sao_Paulo
 
-data_dir: /home/opd/sqm_opd/data
-log_dir: /home/opd/sqm_opd/logs
+sensor:
+  manufacturer: Unihedron
+  model: SQM-LU
+  serial_number: "5620"
+  serial_port: /dev/ttyUSB0
+  baud_rate: 115200
+
+collection:
+  cadence_seconds: 60
+
+  # Start collecting in the evening when the Sun reaches this altitude.
+  start_sun_altitude_deg: -12.0
+
+  # Stop collecting in the morning when the Sun rises above this altitude.
+  stop_sun_altitude_deg: -12.0
+
+  # Cadence used while the Sun is above the acquisition threshold.
+  daytime_check_seconds: 300
+
+  # Scientific dark-sky criterion stored in usable_dark_sky.
+  usable_sun_altitude_deg: -18.0
+  require_moon_below_horizon: true
+
+  serial_timeout_seconds: 2.0
+  serial_settle_seconds: 2.0
+
+storage:
+  data_dir: /var/lib/sqm-node/data
+  log_dir: /var/log/sqm-node
+  retention_days: 90
+
+  # Normally false to avoid forcing an SD-card flush every minute.
+  fsync_each_row: false
 
 server:
   enabled: true
   hostname: SERVER_HOST
-  username: irapuan
-  remote_path: /home/irapuan/sqm_network/incoming/SQM_OPD_001/
-  ssh_key: /home/opd/.ssh/sqm_opd_ed25519
+  username: REMOTE_USER
+  remote_base_path: /srv/sqm-network/incoming
+  ssh_key: /etc/sqm-node/keys/sync_ed25519
