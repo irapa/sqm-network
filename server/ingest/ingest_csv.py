@@ -813,6 +813,7 @@ def main():
         "found": len(files),
         "processed": 0,
         "skipped": 0,
+        "ok": 0,
         "warning": 0,
         "error": 0,
         "unstable": 0,
@@ -887,6 +888,7 @@ def main():
     print("Files found:      {}".format(summary["found"]))
     print("Files processed:  {}".format(summary["processed"]))
     print("Files skipped:    {}".format(summary["skipped"]))
+    print("Files ok:         {}".format(summary["ok"]))
     print("Files warning:    {}".format(summary["warning"]))
     print("Files error:      {}".format(summary["error"]))
     print("Files unstable:   {}".format(summary["unstable"]))
