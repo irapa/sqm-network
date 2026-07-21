@@ -85,3 +85,9 @@ Para novas estações, altere `sensor_id`, `site_name`, coordenadas e diretório
 ## Licença
 
 MIT License.
+
+## Production deployment
+
+The validated production layout, operational paths, health checks and
+rollback procedure are documented in
+[`docs/PRODUCTION_DEPLOYMENT.md`](docs/PRODUCTION_DEPLOYMENT.md).
